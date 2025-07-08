@@ -53,50 +53,27 @@
       <button onclick="calculateCalories()">Calculate</button>
       <p id="calorieResult"></p>
     </section>
-    <h3 style="margin-top: 40px; text-align: center;">💡 Daily Calorie Needs Based on Activity Level</h3>
+    <h3 style="margin-top: 40px; text-align: center;">💡 Your Calories Based on Activity Factor</h3>
     
     <div style="overflow-x:auto; max-width: 800px; margin: 20px auto;">
-      <table style="width:100%; border-collapse: collapse; font-size: 16px;">
+      <table id="activityTable" style="width:100%; border-collapse: collapse; font-size: 16px;">
         <thead style="background-color: #2c3e50; color: #fff;">
           <tr>
-            <th style="padding: 12px; border: 1px solid #ccc;">Activity Level</th>
-            <th style="padding: 12px; border: 1px solid #ccc;">Calories (approx.)</th>
+            <th style="padding: 12px; border: 1px solid #ccc;">Activity Factor</th>
+            <th style="padding: 12px; border: 1px solid #ccc;">Description</th>
+            <th style="padding: 12px; border: 1px solid #ccc;">Estimated Calories</th>
           </tr>
         </thead>
-        <tbody>
-          <tr>
-            <td style="padding: 10px; border: 1px solid #ddd;">Sedentary: little or no exercise</td>
-            <td style="padding: 10px; border: 1px solid #ddd;">1,926</td>
-          </tr>
-          <tr>
-            <td style="padding: 10px; border: 1px solid #ddd;">Exercise 1–3 times/week</td>
-            <td style="padding: 10px; border: 1px solid #ddd;">2,207</td>
-          </tr>
-          <tr>
-            <td style="padding: 10px; border: 1px solid #ddd;">Exercise 4–5 times/week</td>
-            <td style="padding: 10px; border: 1px solid #ddd;">2,351</td>
-          </tr>
-          <tr>
-            <td style="padding: 10px; border: 1px solid #ddd;">Daily or intense 3–4 times/week</td>
-            <td style="padding: 10px; border: 1px solid #ddd;">2,488</td>
-          </tr>
-          <tr>
-            <td style="padding: 10px; border: 1px solid #ddd;">Intense 6–7 times/week</td>
-            <td style="padding: 10px; border: 1px solid #ddd;">2,769</td>
-          </tr>
-          <tr>
-            <td style="padding: 10px; border: 1px solid #ddd;">Very intense daily / physical job</td>
-            <td style="padding: 10px; border: 1px solid #ddd;">3,050</td>
-          </tr>
+        <tbody id="activityBody">
+          <!-- JS will fill this dynamically -->
         </tbody>
       </table>
     
-      <p style="font-size: 14px; color: #555; margin-top: 10px; text-align: center;">
-        <strong>Exercise:</strong> 15–30 mins elevated heart rate • 
-        <strong>Intense:</strong> 45–120 mins • 
-        <strong>Very Intense:</strong> 2+ hrs or physical labor
+      <p style="font-size: 14px; color: #777; text-align: center; margin-top: 10px;">
+        🔍 These values are calculated from your data above.
       </p>
     </div>
+
 
 
 <!--     <section>
