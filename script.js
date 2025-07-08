@@ -1,4 +1,4 @@
-// BMI
+// BMI Calculator
 function calculateBMI() {
   const weight = parseFloat(document.getElementById("weight").value);
   const height = parseFloat(document.getElementById("height").value) / 100;
@@ -10,7 +10,7 @@ function calculateBMI() {
   }
 }
 
-// Calories
+// Calorie Calculator
 function calculateCalories() {
   const age = parseInt(document.getElementById("age").value);
   const gender = document.getElementById("gender").value;
@@ -20,22 +20,17 @@ function calculateCalories() {
 
   if (age && weight && height && activity) {
     let bmr;
-    if (gender === "male") {
+    if (gender.toLowerCase() === "male") {
       bmr = 10 * weight + 6.25 * height - 5 * age + 5;
     } else {
       bmr = 10 * weight + 6.25 * height - 5 * age - 161;
     }
     const tdee = bmr * activity;
     document.getElementById("calorieResult").innerText = `BMR: ${Math.round(bmr)} kcal/day | TDEE: ${Math.round(tdee)} kcal/day`;
-
-    // ✅ Step 3: Add this
-    const customBMR = calculateBMR(age, gender, weight, height);
-    updateActivityTable(customBMR);
   } else {
     alert("Fill all fields with valid values");
   }
 }
-
 
 // Weight Tracker
 function logWeight() {
@@ -64,14 +59,14 @@ function displayWeightHistory() {
 
 displayWeightHistory();
 
-// Vegan Meal
+// Vegan Meal Suggestions
 const meals = [
   "Vegan Chickpea Curry with Rice",
   "Peanut Butter Banana Toast",
   "Tofu Stir Fry with Veggies",
   "Vegan Protein Smoothie",
   "Oats with Almond Milk & Fruits",
-  "Quinoa Salad with Hummus",
+  "Quinoa Salad with Hummus"
 ];
 
 function suggestMeal() {
@@ -79,14 +74,16 @@ function suggestMeal() {
   document.getElementById("meal").innerText = `Try: ${meal}`;
 }
 
+// BMR Calculator for Activity Table
 function calculateBMR(age, gender, weight, height) {
-  if (gender === 'Male') {
+  if (gender.toLowerCase() === 'male') {
     return 10 * weight + 6.25 * height - 5 * age + 5;
   } else {
     return 10 * weight + 6.25 * height - 5 * age - 161;
   }
 }
 
+// Dynamic Activity Factor Table Generator
 function updateActivityTable(bmr) {
   const activityFactors = {
     "1.2": "Sedentary (little or no exercise)",
@@ -98,7 +95,7 @@ function updateActivityTable(bmr) {
   };
 
   const tableBody = document.getElementById("activityBody");
-  tableBody.innerHTML = ""; // Clear old data
+  tableBody.innerHTML = "";
 
   for (const factor in activityFactors) {
     const calories = Math.round(bmr * parseFloat(factor));
@@ -113,6 +110,7 @@ function updateActivityTable(bmr) {
   }
 }
 
+// Auto-update Activity Table When Inputs Are Filled
 function tryUpdateActivityTable() {
   const age = parseInt(document.getElementById("age").value);
   const gender = document.getElementById("gender").value;
@@ -122,12 +120,11 @@ function tryUpdateActivityTable() {
   if (age && gender && weight && height) {
     const bmr = calculateBMR(age, gender, weight, height);
     updateActivityTable(bmr);
-
-    // Show guidance
     document.getElementById("factorGuide").style.display = "block";
   }
 }
 
+// Input Event Listeners
 document.getElementById("age").addEventListener("input", tryUpdateActivityTable);
 document.getElementById("gender").addEventListener("change", tryUpdateActivityTable);
 document.getElementById("activityWeight").addEventListener("input", tryUpdateActivityTable);
