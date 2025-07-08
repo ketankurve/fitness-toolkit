@@ -27,10 +27,15 @@ function calculateCalories() {
     }
     const tdee = bmr * activity;
     document.getElementById("calorieResult").innerText = `BMR: ${Math.round(bmr)} kcal/day | TDEE: ${Math.round(tdee)} kcal/day`;
+
+    // ✅ Step 3: Add this
+    const customBMR = calculateBMR(age, gender, weight, height);
+    updateActivityTable(customBMR);
   } else {
     alert("Fill all fields with valid values");
   }
 }
+
 
 // Weight Tracker
 function logWeight() {
@@ -72,4 +77,38 @@ const meals = [
 function suggestMeal() {
   const meal = meals[Math.floor(Math.random() * meals.length)];
   document.getElementById("meal").innerText = `Try: ${meal}`;
+}
+
+function calculateBMR(age, gender, weight, height) {
+  if (gender === 'Male') {
+    return 10 * weight + 6.25 * height - 5 * age + 5;
+  } else {
+    return 10 * weight + 6.25 * height - 5 * age - 161;
+  }
+}
+
+function updateActivityTable(bmr) {
+  const activityFactors = {
+    "1.2": "Sedentary (little or no exercise)",
+    "1.375": "Light (1–3 days/week)",
+    "1.55": "Moderate (4–5 days/week)",
+    "1.6": "Intense (daily or 3–4 intense workouts)",
+    "1.725": "Very Intense (6–7 days/week)",
+    "1.9": "Extra Active (physical job or 2+ hrs training)"
+  };
+
+  const tableBody = document.getElementById("activityBody");
+  tableBody.innerHTML = ""; // Clear old data
+
+  for (const factor in activityFactors) {
+    const calories = Math.round(bmr * parseFloat(factor));
+    const row = `
+      <tr>
+        <td style="padding: 10px; border: 1px solid #ddd;">${factor}</td>
+        <td style="padding: 10px; border: 1px solid #ddd;">${activityFactors[factor]}</td>
+        <td style="padding: 10px; border: 1px solid #ddd;">${calories} kcal</td>
+      </tr>
+    `;
+    tableBody.innerHTML += row;
+  }
 }
