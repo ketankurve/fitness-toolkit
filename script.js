@@ -112,3 +112,23 @@ function updateActivityTable(bmr) {
     tableBody.innerHTML += row;
   }
 }
+
+function tryUpdateActivityTable() {
+  const age = parseInt(document.getElementById("age").value);
+  const gender = document.getElementById("gender").value;
+  const weight = parseFloat(document.getElementById("activityWeight").value);
+  const height = parseFloat(document.getElementById("activityHeight").value);
+
+  if (age && gender && weight && height) {
+    const bmr = calculateBMR(age, gender, weight, height);
+    updateActivityTable(bmr);
+
+    // Show guidance
+    document.getElementById("factorGuide").style.display = "block";
+  }
+}
+
+document.getElementById("age").addEventListener("input", tryUpdateActivityTable);
+document.getElementById("gender").addEventListener("change", tryUpdateActivityTable);
+document.getElementById("activityWeight").addEventListener("input", tryUpdateActivityTable);
+document.getElementById("activityHeight").addEventListener("input", tryUpdateActivityTable);
