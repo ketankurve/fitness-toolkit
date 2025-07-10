@@ -23,24 +23,30 @@ section {
   margin-bottom: 30px;
 }
 
-input, select {
-  margin: 5px 5px 10px 0;
-  padding: 8px;
+input[type="number"], select {
+  padding: 10px;
+  margin: 8px 5px;
   width: 100%;
   max-width: 300px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 15px;
 }
 
 button {
-  padding: 10px 20px;
-  background: #28a745;
-  border: none;
+  padding: 10px 15px;
+  background-color: #28a745;
   color: white;
+  border: none;
+  border-radius: 5px;
   cursor: pointer;
-  margin-top: 5px;
+  margin: 10px 5px;
+  font-size: 15px;
+  transition: background-color 0.3s ease;
 }
 
 button:hover {
-  background: #218838;
+  background-color: #218838;
 }
 
 ul {
