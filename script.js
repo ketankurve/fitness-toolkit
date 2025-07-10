@@ -32,33 +32,6 @@ function calculateCalories() {
   }
 }
 
-// // Weight Tracker
-// function logWeight() {
-//   const weight = document.getElementById("logWeight").value;
-//   if (!weight) return;
-//   const date = new Date().toLocaleDateString();
-//   const entry = `${date}: ${weight} kg`;
-
-//   let history = JSON.parse(localStorage.getItem("weightHistory")) || [];
-//   history.unshift(entry);
-//   localStorage.setItem("weightHistory", JSON.stringify(history));
-
-//   displayWeightHistory();
-// }
-
-// function displayWeightHistory() {
-//   const list = document.getElementById("weightHistory");
-//   list.innerHTML = "";
-//   const history = JSON.parse(localStorage.getItem("weightHistory")) || [];
-//   history.forEach(item => {
-//     const li = document.createElement("li");
-//     li.textContent = item;
-//     list.appendChild(li);
-//   });
-// }
-
-// displayWeightHistory();
-
 // Vegan Meal Suggestions
 const meals = [
   "Vegan Chickpea Curry with Rice",
